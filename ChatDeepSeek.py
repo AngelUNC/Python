@@ -1,6 +1,8 @@
 import requests
 import json
 
+Pregunta = input(str(f"Pregunta: "))
+
 url = "http://127.0.0.1:8080/v1/chat/completions"
 headers = {
     "Content-Type": "application/json"
@@ -11,7 +13,7 @@ data = {
         { "role": "system", "content": "Responde en Español" },
         {
             "role": "user",
-            "content": "Resuelve el siguiente sistema de ecuaciones no lineales utilizando el método de sustitución o igualación: \n\nx^2 + y^2 = 25 \n2x - y = 4"
+            "content": (Pregunta)
         }
     ],
     "temperature": 0.7,
