@@ -2,17 +2,15 @@ import time
 import json
 import requests
 
-# Puerto del modo depuración de Chrome
 DEBUG_PORT = 9222
-URL_PART = "us.i.mi.com/mobile/find"  # Parte clave de la URL
-REFRESH_INTERVAL = 300  # 5 minutos
+URL_PART = "us.i.mi.com/mobile/find"  
+REFRESH_INTERVAL = 300  
 
-# Obtener las pestañas abiertas en la sesión de Chrome
+
 try:
     response = requests.get(f"http://localhost:{DEBUG_PORT}/json")
     tabs = json.loads(response.text)
-    
-    # Buscar la pestaña con la URL deseada
+      
     target_tab = None
     for tab in tabs:
         if "webSocketDebuggerUrl" in tab and URL_PART in tab.get("url", ""):
